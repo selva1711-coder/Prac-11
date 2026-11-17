@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Sphere</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1edff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            width: 350px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #c7b8ee;
+        }
+
+        h1 {
+            color: #7041c5;
+            font-size: 30px;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #c9bce8;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #7041c5;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #512b99;
+        }
+
+        #result {
+            color: green;
+            font-weight: bold;
+            line-height: 1.8;
+            text-align: left;
+            margin-top: 20px;
+            overflow-wrap: anywhere;
+        }
+
+        .footer {
+            color: gray;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Task Sphere</h1>
+
+    <h3>Task Registration Form</h3>
+
+    <form onsubmit="processForm(event)">
+
+        <input type="text" id="name"
+        placeholder="Enter Your Name" required>
+
+        <input type="text" id="task"
+        placeholder="Enter Task Name" required>
+
+        <textarea id="description"
+        placeholder="Enter Task Description"
+        rows="3" required></textarea>
+
+        <input type="date" id="date" required>
+
+        <select id="priority" required>
+            <option value="">Select Task Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+
+        <select id="category" required>
+            <option value="">Select Task Category</option>
+            <option value="Study">Study</option>
+            <option value="Personal">Personal</option>
+            <option value="Project">Project</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Add Task</button>
+
+    </form>
+
+    <h3 id="result"></h3>
+
+    <div class="footer">
+        Stay Organized | Complete Your Goals
+    </div>
+
+</div>
+
+<script>
+
+function processForm(event) {
+
+    event.preventDefault();
+
+    // Get form values
+
+    let name = document.getElementById("name").value.trim();
+
+    let task = document.getElementById("task").value.trim();
+
+    let description = document.getElementById("description").value.trim();
+
+    let date = document.getElementById("date").value;
+
+    let priority = document.getElementById("priority").value;
+
+    let category = document.getElementById("category").value;
+
+    // Check empty fields
+
+    if (name === "" || task === "" ||
+        description === "" || date === "" ||
+        priority === "" || category === "") {
+
+        document.getElementById("result").innerHTML =
+        "Please fill all the fields!";
+
+        return;
+    }
+
+    // Display successful task registration
+
+    document.getElementById("result").innerHTML =
+
+        "Task Added Successfully!<br><br>" +
+
+        "Student Name: " + name + "<br>" +
+
+        "Task Name: " + task + "<br>" +
+
+        "Description: " + description + "<br>" +
+
+        "Due Date: " + date + "<br>" +
+
+        "Priority: " + priority + "<br>" +
+
+        "Category: " + category;
+
+}
+
+</script>
+
+</body>
+</html>
